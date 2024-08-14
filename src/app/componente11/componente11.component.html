@@ -1,1 +1,48 @@
-<p>componente11 works!</p>
+<form [formGroup]="form">
+    <input type="text" formControlName="nome" placeholder="Nome" class="form-control">
+    @if(form.get('nome').hasError('required')&&form.get('nome').touched){
+        <p class = "alert alert-warning">O campo nome é obrigatório</p>
+    }
+    <input type="number" formControlName="idade" placeholder="Idade" class="form-control">
+    @if(form.get('idade').hasError('required')&&form.get('idade').touched){
+        <p class = "alert alert-warning">O campo idade é obrigatório</p>
+    }
+    @if(form.get('idade').hasError('min')&&form.get('idade').touched){
+        <p class = "alert alert-warning">A idade não pode ser menor que 0!</p>
+    }
+    @if(form.get('idade').hasError('max')&&form.get('idade').touched){
+        <p class = "alert alert-warning">A idade não pode ser maior que 120!</p>
+    }
+    <input type="text" formControlName="cidade" placeholder="Cidade" class="form-control">
+    
+    @if (btnCadastrar) {
+        <input type="button" value="Cadastrar" (click)="cadastrarPessoa()" class="btn btn-primary" [disabled]="form.invalid">
+    }@else {
+        <input type="button" value="Alterar" (click)="alterarPessoa()" class="btn btn-primary" [disabled]="form.invalid">
+        <input type="button" value="Cancelar" (click)="resetar()" class="btn btn-primary">
+    }
+</form>
+
+<table class="table">
+    <thead>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Cidade</th>
+        <th>Selecionar</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let v of vetor; index as indice">
+            <td>{{indice}}</td>
+            <td>{{v.nome}}</td>
+            <td>{{v.idade}}</td>
+            <td>{{v.cidade}}</td>
+            <td>
+                <button  (click)="selecionarPessoa(indice)" class="btn btn-primary">Selecionar</button>
+                <button  (click)="removerPessoa(indice)" class="btn btn-primary">Remover</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

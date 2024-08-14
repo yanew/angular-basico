@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class Componente08Component {
 
+    media:number = 4;
+    nomes:string[] = ['Yane', 'Nancy', 'Bruna', 'Glynnis', 'Mara'];
+    linguagem:string = 'Java';
 }

@@ -1,1 +1,6 @@
-<p>componente06 works!</p>
+<div [ngSwitch]="ling">
+    <p *ngSwitchCase="'Java'">Linguagem de programação</p>
+    <p *ngSwitchCase="'HTML'">Linguagem de marcação</p>
+    <p *ngSwitchCase="'CSS'">Linguagem de estilo</p>
+    <p *ngSwitchDefault="">Linguagem não encontrada</p>
+</div>

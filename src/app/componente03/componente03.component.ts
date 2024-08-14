@@ -9,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class Componente03Component {
 
+  imagem:string = 'assets/dia.jpg';
+
+  alterarImagem(){
+    if(this.imagem==='assets/dia.jpg'){
+        this.imagem = 'assets/noite.jpg';
+    }else{
+      this.imagem = 'assets/dia.jpg';
+    }
+  }
+
 }
