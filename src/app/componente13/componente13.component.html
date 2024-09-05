@@ -1,14 +1,12 @@
-
-<p>componente13 works!</p>
 <!-- FORMULÁRIO -->
-<form>
-    <input type="number" class="form-control" readonly >
-    <input type="text"   class="form-control" placeholder="Nome">
-    <input type="number" class="form-control" placeholder="Valor">
+<form [formGroup]="form">
+    <input type="number" class="form-control" formControlName="id" readonly >
+    <input type="text"   class="form-control" formControlName="nome" placeholder="Nome">
+    <input type="number" class="form-control" formControlName="valor" placeholder="Valor">
 
-    <input type="button" class="btn btn-primary" value="Cadastrar" *ngIf="btnCadastrar"> 
-    <input type="button" class="btn btn-primary" value="Alterar" *ngIf="!btnCadastrar"> 
-    <input type="button" class="btn btn-primary" value="Remover" *ngIf="!btnCadastrar"> 
+    <input type="button" class="btn btn-primary" value="Cadastrar" *ngIf="btnCadastrar" (click) = "cadastrar()"> 
+    <input type="button" class="btn btn-primary" value="Alterar" *ngIf="!btnCadastrar" (click) = "alterarProduto()"> 
+    <input type="button" class="btn btn-primary" value="Remover" *ngIf="!btnCadastrar" (click) = "removerProduto()"> 
 </form>
 
 <!-- TABELA -->
@@ -27,7 +25,7 @@
             <td>{{i+1}}</td>
             <td>{{v.nome}}</td>
             <td>{{v.valor}}</td>
-            <td><button class = "btn btn-primary">Selecionar</button></td>
+            <td><button class = "btn btn-primary" (click) = "selecionarProduto(i)">Selecionar</button></td>
         </tr>
     </tbody>
 </table>
